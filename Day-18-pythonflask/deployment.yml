@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: nginx-replicaset
+spec:
+  replicas: 3                    # Number of replicas
+  selector:                      # Pod selector
+    matchLabels:
+      app: nginx
+  template:                      # Pod template
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx-container
+        image: 211125451961.dkr.ecr.us-east-1.amazonaws.com/vani:latest
+        ports:
+        - containerPort: 5000
